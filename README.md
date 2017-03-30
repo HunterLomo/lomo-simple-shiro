@@ -19,6 +19,6 @@
   4. 访问127.0.0.1:8888/login or 127.0.0.1:9999/login
 
 ##  图片
-![自然](https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1490867958&di=95e67a3f858089476f89fd4c14619b02&src=http://img.tuku.cn/file_big/201507/6568e0bd07c6474a9fa400942ad1fa19.jpg)
+![自然](http://img4.imgtn.bdimg.com/it/u=836221564,1579150845&fm=21&gp=0.jpg)
 ==============================
 *初次使用markdown，感觉还是挺好玩的！*  
