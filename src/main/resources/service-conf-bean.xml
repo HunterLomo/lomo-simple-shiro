@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+  <!-- 手动声明所有API的实现类，代替@Service -->
+  <!-- 用户 -->
+  <bean id = "userService" class = "com.lomo.service.impl.UserServiceImpl"/>
+  <!-- 角色 -->
+  <bean id = "roleService" class = "com.lomo.service.impl.RoleServiceImpl"/>
+  <!-- 权限 -->
+  <bean id = "permissionService" class = "com.lomo.service.impl.PermissionServiceImpl"/>
+</beans>

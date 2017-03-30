@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 本文件由代码生成器自动完成 -->
+<mapper namespace = "com.lomo.dao.PermissionDao">
+  <!-- mysql 查询条件 -->
+  <sql id = "sql_where">
+    <if test = "id !=null and id !=''">
+      AND id = #{id,jdbcType=CHAR}
+    </if>
+    <if test = "permissionName !=null and permissionName !=''">
+      AND permission_name = #{permissionName,jdbcType=VARCHAR}
+    </if>
+    <if test = "roleId !=null and roleId !=''">
+      AND role_id = #{roleId,jdbcType=CHAR}
+    </if>
+  </sql>
+
+  <!-- 字段与实体的映射 -->
+  <resultMap id = "BaseResultMap"
+             type = "com.lomo.entity.PermissionEntity">
+    <id column = "id" property = "id" jdbcType = "CHAR"/>
+    <result column = "permission_name" property = "permissionName" jdbcType = "VARCHAR"/>
+    <result column = "role_id" property = "roleId" jdbcType = "CHAR"/>
+  </resultMap>
+
+  <!-- 字段集合 -->
+  <sql id = "Base_Column_List">
+    id , permission_name, role_id
+  </sql>
+
+  <!-- 根据主键查询 -->
+  <select id = "selectByPrimaryKey" resultMap = "BaseResultMap" parameterType = "java.lang.String">
+    SELECT
+    <include refid = "Base_Column_List"/>
+    FROM t_permission
+    WHERE id = #{id,jdbcType=CHAR};
+  </select>
+
+  <!-- 根据条件查询，全部 -->
+  <select id = "searchAllData" resultMap = "BaseResultMap"
+          parameterType = "com.lomo.entity.PermissionEntity">
+    SELECT
+    <include refid = "Base_Column_List"/>
+    FROM t_permission WHERE 1=1
+    <include refid = "sql_where"/>
+  </select>
+
+  <!-- 根据用户ID，获取用户权限集合 -->
+  <select id = "findDataListByUserId" resultMap = "BaseResultMap"
+          parameterType = "java.lang.String">
+    SELECT tp.id,tp.permission_name,tp.role_id FROM t_permission tp
+    INNER JOIN t_user_role tur ON tur.role_id = tp.role_id
+    INNER JOIN t_user tu ON tu.id = tur.user_id
+    AND tu.id = #{userId,jdbcType=CHAR}
+  </select>
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 本文件由代码生成器自动完成 -->
+<mapper namespace = "com.lomo.dao.RoleDao">
+  <!-- mysql 查询条件 -->
+  <sql id = "sql_where">
+    <if test = "id !=null and id !=''">
+      AND id = #{id,jdbcType=CHAR}
+    </if>
+    <if test = "roleName !=null and roleName !=''">
+      AND role_name = #{roleName,jdbcType=VARCHAR}
+    </if>
+  </sql>
+
+  <!-- 字段与实体的映射 -->
+  <resultMap id = "BaseResultMap"
+             type = "com.lomo.entity.RoleEntity">
+    <id column = "id" property = "id" jdbcType = "CHAR"/>
+    <result column = "role_name" property = "roleName" jdbcType = "VARCHAR"/>
+  </resultMap>
+
+  <!-- 字段集合 -->
+  <sql id = "Base_Column_List">
+    id , role_name
+  </sql>
+
+  <!-- 根据主键查询 -->
+  <select id = "selectByPrimaryKey" resultMap = "BaseResultMap" parameterType = "java.lang.String">
+    SELECT
+    <include refid = "Base_Column_List"/>
+    FROM t_role
+    WHERE id = #{id,jdbcType=CHAR};
+  </select>
+
+  <!-- 根据条件查询，全部 -->
+  <select id = "searchAllData" resultMap = "BaseResultMap"
+          parameterType = "com.lomo.entity.RoleEntity">
+    SELECT
+    <include refid = "Base_Column_List"/>
+    FROM t_role WHERE 1=1
+    <include refid = "sql_where"/>
+  </select>
+
+  <!-- 根据用户主键ID，获取角色集合 -->
+  <select id = "findDataListByUserId" resultMap = "BaseResultMap"
+          parameterType = "java.lang.String">
+    SELECT t1.id,t1.role_name FROM t_role t1
+    INNER JOIN t_user_role t2 ON t1.id = t2.role_id
+    AND t2.user_id = #{userId,jdbcType=CHAR}
+  </select>
+
+</mapper>

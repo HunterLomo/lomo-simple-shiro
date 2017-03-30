@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status = "off">
+  <appenders>
+    <Console name = "Console" target = "SYSTEM_OUT">
+      <ThresholdFilter level = "trace" onMatch = "ACCEPT" onMismatch = "DENY"/>
+      <PatternLayout pattern = "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level [%file] - %msg%n"/>
+    </Console>
+  </appenders>
+  <loggers>
+    <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+    <logger name = "org.springframework" level = "INFO"></logger>
+    <!--<logger name = "org.mybatis" level = "INFO"></logger>-->
+    <root level = "DEBUG">
+      <appender-ref ref = "Console"/>
+    </root>
+  </loggers>
+</configuration>
