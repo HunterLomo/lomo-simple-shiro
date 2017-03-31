@@ -3,6 +3,9 @@
 <html>
 <head>
   <title>简易shiro登录页</title>
+  <%-- console大法好 --%>
+  <script type="application/javascript"
+          src="${pageContext.request.contextPath}/static/itellyou.js"></script>
 </head>
 <body>
 <h1>登录页面---${message}</h1>
